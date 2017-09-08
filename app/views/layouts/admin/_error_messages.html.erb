@@ -1,0 +1,11 @@
+<% if resource.errors.any? %>
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h3><%= t((resource.errors.count > 1 ? :other : :one), scope: [:errors, :template, :header], model: t(ActiveModel::Naming.param_key(resource), scope: [:models]), count: resource.errors.count) %></h3>
+    <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
